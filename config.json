@@ -1,0 +1,36 @@
+{
+    "samples": ["CR1_S17", "CR5_S18", "CR9_S19", "CR13_S20"],
+    "fastq_file_dir": "../fastq_files/",
+    "fastq_prefix": "SG_",
+    "fastq_mid": "_L001_",
+    "fastq_suffix": "_001",
+    "assembly": "mm10",
+    "bowtie2_params": "--local --maxins 1000",
+    "qualtrim_mapq": "10",
+    "picard_params": "-Xmx32g -jar /home/groups/crabtree/Software/picard/2.17.11/picard.jar",
+    "samtools_nodup_params": "-b -h -F 3840",
+    "genomeSizeFile": "/home/groups/crabtree/Software/bedtools/2.27.1/genomes/mouse.mm10.genome",
+    "bamCoverage_params": "--normalizeUsing RPGC --effectiveGenomeSize 2652783500 --centerReads --extendReads",
+    "seacr_params":
+    {
+        "seacr_path": "/oak/stanford/groups/crabtree/Sai/Software/SEACR_1.3.sh",
+        "type": ["relaxed","stringent"],
+	"cutoff": ["0.05","0.1"],
+	"merge": ["1000","100"]
+    },
+    "macs2_params":
+    {
+        "q": ["5e-2","1e-2"],
+	"genome": "mm",
+	"type": "narrow",
+	"merge": "1000"
+    },
+    "deeptools":
+    {
+	"bamPE_params": "--plotFileFormat pdf --verbose",
+	"plotCov_params": "--smartLabels --skipZeros --extendReads --ignoreDuplicates --centerReads",
+	"blacklist_file": "/oak/stanford/groups/crabtree/Sai//Blacklist_beds/mm10.blacklist.bed",
+	"multiBamSum_params": "--smartLabels --verbose --extendReads",
+	"plotCorr_params": "--skipZeros"
+    }
+}

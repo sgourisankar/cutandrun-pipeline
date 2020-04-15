@@ -1,0 +1,60 @@
+{
+    "__default__":
+    {
+        "mem": "64G",
+        "time": "1-00:00:00",
+        "email": "",
+        "mail_type": "FAIL",
+        "partition": "normal",
+        "error": "{log}",
+        "output": "{log}"
+    },
+    "qualtrim":
+    {
+        "mem": "32G",
+        "time": "0-01:00:00"
+    },
+    "fastqc":
+    {
+        "mem": "4G",
+        "time": "0-00:45:00"
+    },
+    "make_archive":
+    {
+        "output": "slurm-makearchive-%j.out"
+    },
+    "deeptools_solo:":
+    {
+        "mem": "8G",
+        "time": "0-01:00:00"
+    },
+    "seacr_1of3":
+    {
+        "mem": "4G",
+        "time": "0-01:00:00"
+    },
+    "seacr_merge_2of3":
+    {
+        "mem": "4G",
+       	"time":	"0-01:00:00"
+    },
+    "seacr_count_3of3":
+    {
+        "mem": "4G",
+       	"time":	"0-01:00:00"
+    },
+    "macs2_1of2":
+    {
+        "mem": "4G",
+       	"time":	"0-01:00:00"
+    },
+    "macs2_count_2of2":
+    {
+        "mem": "4G",
+       	"time":	"0-01:00:00"
+    },
+    "deeptools_multiCorr":
+    {
+       	"time":	"0-01:00:00"
+    }
+}
