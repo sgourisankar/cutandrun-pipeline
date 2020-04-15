@@ -86,8 +86,7 @@ The main directory created will be __/SM__
 * __SM/deeptools__ has all the depptools plots. Specifically, 
   *   coverage.{sample}.pdf is depth from plotCoverage for one sample
   *   coverage."{sample1-sample2-sample3...}.pdf is the same but with all the samples together
-  *   fragmentSize.{sample}.pdf/.log.pdf is log-scale or normal scale fragment size distribution for 
-  *     that sample
+  *   fragmentSize.{sample}.pdf/.log.pdf is log-scale or normal scale fragment size distribution for that sample
   *   fragmentSize.{sample1-sample2-sample3...}.pdf/.log.pdf is the same but w/ all together
   *   .npz is for deeptools, an internal matrix of samples
   *   .heatmap/scatterplot.pearson/spearman are from multiBamSummary for all the samples comparison
