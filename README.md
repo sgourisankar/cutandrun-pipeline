@@ -19,7 +19,8 @@ Then, type "Y" to run the pipeline. Jobs will be queued for submission automatic
 
 You will know the run is concluded when a) each of your samples has a tar.gz archive created in the folder "analysis_tars" with all of its processed files; and b) the rule "all" has been run (which you can see in nohup.out). 
 
-######HOW TO EDIT config.json#########
+### HOW TO EDIT config.json
+
 The Number One error here is forgetting commas at the end of each line but the last one in a {} group. If you get an error, check this first. 
 
 Make extra sure to change anything below labeled "->"!!
@@ -55,7 +56,8 @@ Make extra sure to change anything below labeled "->"!!
        blacklist bed file of regions to skip. 
        
 
-######HOW TO EDIT cluster.json#########
+### HOW TO EDIT cluster.json
+
 Under "__default__",
 1. "mem" is --mem-per-cpu 
 2. "time" is -t (time)
@@ -64,38 +66,40 @@ Under "__default__",
 5. Don't change "error" or "output"
 You can change job resources for each rule in a similar format, to suit how large your files are.
 
-######OUTPUT of Pipeline#########
-The main directory created will be __/SM__
-__SM/fastqc__ has fastqc files for all samples processed
-__SM/sambam__ has .sam, .metrics, and .bam files after alignment
-__SM/qualtrim_nodup__ has: 
-    QualTrimmed.bam = after quality trimming
-    QualTrimmed.Picard.bam = after quality trimming and Picard marking,
-    NoDup.bam is a read-name sorted file after filtering duplicates and low quality reads
-    NoDup.sorted.bam(.bai) is a coordinate-sorted version (and index) of No.Dup.bam
-    (all further analyses use NoDup.sorted.bam)
-__SM/bed__ has sorted and clipped bedfiles
-__SM/bdg__ has sorted and clipped bedgraphs
-__SM/bedpe__ has sorted bedpe files for macs2 and seacr 
-__SM/bw__ has depth normalized bigwigs (after sorging and clipping)
-__SM/seacr__ has all the seacr beds and merged beds
-__SM/macs2__ has all the macs2 files
-__SM/peakcounts__ has all the counts files from macs2 and seacr peak calling
-__SM/deeptools__ has all the depptools plots. Specifically, 
-    coverage.{sample}.pdf is depth from plotCoverage for one sample
-    coverage."{sample1-sample2-sample3...}.pdf is the same but with all the samples together
-    fragmentSize.{sample}.pdf/.log.pdf is log-scale or normal scale fragment size distribution for 
-      that sample
-    fragmentSize.{sample1-sample2-sample3...}.pdf/.log.pdf is the same but w/ all together
-    .npz is for deeptools, an internal matrix of samples
-    .heatmap/scatterplot.pearson/spearman are from multiBamSummary for all the samples comparison
-__SM/analysis_tars__ has, for each sample, a tar.gz archive of all the relevant plots and files. 
+### OUTPUT of Pipeline
 
-######What you can change#########
+The main directory created will be __/SM__
+* __SM/fastqc__ has fastqc files for all samples processed
+* __SM/sambam__ has .sam, .metrics, and .bam files after alignment
+* __SM/qualtrim_nodup__ has: 
+  *   QualTrimmed.bam = after quality trimming
+  *   QualTrimmed.Picard.bam = after quality trimming and Picard marking,
+  *   NoDup.bam is a read-name sorted file after filtering duplicates and low quality reads
+  *   NoDup.sorted.bam(.bai) is a coordinate-sorted version (and index) of No.Dup.bam (all further analyses use NoDup.sorted.bam)
+* __SM/bed__ has sorted and clipped bedfiles
+* __SM/bdg__ has sorted and clipped bedgraphs
+* __SM/bedpe__ has sorted bedpe files for macs2 and seacr 
+* __SM/bw__ has depth normalized bigwigs (after sorging and clipping)
+* __SM/seacr__ has all the seacr beds and merged beds
+* __SM/macs2__ has all the macs2 files
+* __SM/peakcounts__ has all the counts files from macs2 and seacr peak calling
+* __SM/deeptools__ has all the depptools plots. Specifically, 
+  *   coverage.{sample}.pdf is depth from plotCoverage for one sample
+  *   coverage."{sample1-sample2-sample3...}.pdf is the same but with all the samples together
+  *   fragmentSize.{sample}.pdf/.log.pdf is log-scale or normal scale fragment size distribution for 
+  *     that sample
+  *   fragmentSize.{sample1-sample2-sample3...}.pdf/.log.pdf is the same but w/ all together
+  *   .npz is for deeptools, an internal matrix of samples
+  *   .heatmap/scatterplot.pearson/spearman are from multiBamSummary for all the samples comparison
+* __SM/analysis_tars__ has, for each sample, a tar.gz archive of all the relevant plots and files. 
+
+### WHAT you can change
+
 Snakemake will automatically detect if any files are missing or changed, and rerun the appropriate jobs. If the dry run and graph doesn't show those rules executing, try $ touch FILE.TO.TOUCH 
 You can always directly run rules as targets by changing the $ snakemake  command in the run-SM-workflow.sh file. 
 
 
-######Updates to make#########
-Probably none to this besides fixing bugs. The python file is already too long/unwieldy and for downstream analyses like motif finding etc I'll just write new workflows. 
+### TODO 
+
+Probably none to this besides fixing bugs. Maybe add metaprofiles with deeptools. The python file is already too long/unwieldy and for downstream analyses like motif finding etc I'll just write new workflows. 
 
