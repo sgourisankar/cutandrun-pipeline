@@ -24,29 +24,29 @@ The Number One error here is forgetting commas at the end of each line but the l
 
 Make extra sure to change anything below labeled "->"!!
 
--> 1. "fastq_file_dir": directory with fastq files in it. 
--> 2. "samples", "fastq_prefix", "fastq_mid", and "fastq_suffix": these use the following format: 
+1. --> "fastq_file_dir": directory with fastq files in it. 
+2. --> "samples", "fastq_prefix", "fastq_mid", and "fastq_suffix": these use the following format: 
     fastq_file_dir+"/"+fastq_prefix+"{sample}"+fastq_mid+"R1"+fastq_suffix+".fastq.gz" (or R2)
     In "samples", you can have a comma-separated list [] of all your samples you'd like to 
     process. All following files will be named with just the name of the sample. 
--> 3. "assembly": mm10, mm9, hg38, hg19, etc. Used as a parameter in bowtie2. 
+3. --> "assembly": mm10, mm9, hg38, hg19, etc. Used as a parameter in bowtie2. 
 4. "bowtie2_params": the rest of the bowtie2 parameters
 5. "qualtrim_mapq": the minimum mapq quality score for filtering reads
 6. "picard_params": Picard parameters INCLUDING the path of the picard.jar file.
 7. "samtools_nodup_params": parameters to process picard-marked duplicates and sort them
--> 8. "genomeSizeFile": path of genome size file for appropriate organism
--> 9. "bamCoverage_params": used to create depth-normalized bigwigs. Make sure to change the 
+8. --> "genomeSizeFile": path of genome size file for appropriate organism
+9. --> "bamCoverage_params": used to create depth-normalized bigwigs. Make sure to change the 
       effectiveGenomeSize parameter for the appropriate organism.
--> 10. "seacr_params": make sure to change the path to the .sh file for SEACR where you have it. 
+10. --> "seacr_params": make sure to change the path to the .sh file for SEACR where you have it. 
        Here you can list all the different trials of seacr parameters you'd like, where 
        "type" can be "relaxed" and/or "stringent"; "cutoff" can be any list of cutoffs you'd like 
        to try; "merge" is any list of base-pairs you'd like to try merging peaks. Watch out - the
        more you list here, the longer your analysis will take (e.g. it will submit (# of types x # 
        of cutoffs x # of merge) total jobs) 
--> 11. "macs2_params": "q" is any list of q-values you'd like to try. Make sure to change "genome" 
+11. --> "macs2_params": "q" is any list of q-values you'd like to try. Make sure to change "genome" 
        to the correct organism. "type" can EITHER be "narrow" or "broad", you cannot list both. 
        "merge" can only be one value for the bp to merge peaks, it cannot be a list. 
--> 12. "deeptools": these are parameters for the deeptools functions run. "bamPE_params" are 
+12. --> "deeptools": these are parameters for the deeptools functions run. "bamPE_params" are 
        "parameters" for bamPEFragmentSize; "plotCov_params" are for plotCoverage; 
        "multiBamSum_params" are for multiBamSummary; and "plotCorr_params" are for 
        plotCorrelation. Look at deeptools docs for an explanation. 
@@ -94,6 +94,8 @@ __SM/analysis_tars__ has, for each sample, a tar.gz archive of all the relevant 
 ######What you can change#########
 Snakemake will automatically detect if any files are missing or changed, and rerun the appropriate jobs. If the dry run and graph doesn't show those rules executing, try $ touch FILE.TO.TOUCH 
 You can always directly run rules as targets by changing the $ snakemake  command in the run-SM-workflow.sh file. 
+
+
 ######Updates to make#########
 Probably none to this besides fixing bugs. The python file is already too long/unwieldy and for downstream analyses like motif finding etc I'll just write new workflows. 
 
