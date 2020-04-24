@@ -90,7 +90,8 @@ The main directory created will be __/SM__
   *   fragmentSize.{sample1-sample2-sample3...}.pdf/.log.pdf is the same but w/ all together
   *   .npz is for deeptools, an internal matrix of samples
   *   .heatmap/scatterplot.pearson/spearman are from multiBamSummary for all the samples comparison
-* __SM/analysis_tars__ has, for each sample, a tar.gz archive of all the relevant plots and files. 
+* __SM/analysis_tars__ has, for each sample, a tar.gz archive of all the relevant plots and files.
+* __SM/logs__ has all log files! (To fix later: log files will be deleted by Snakemake if job exits with exit code 1. If this happens, re-run job without sending {cluster.output} to {log} - change the sbatch command in run-SM-workflow.sh. Then you can check the slurm out file.)
 
 ### WHAT you can change
 
