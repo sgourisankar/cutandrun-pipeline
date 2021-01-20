@@ -2,12 +2,20 @@
     "__default__":
     {
         "mem": "64G",
-        "time": "1-00:00:00",
+        "time": "2-00:00:00",
         "email": "",
         "mail_type": "FAIL",
         "partition": "normal",
         "error": "{log}",
         "output": "{log}"
+    },
+    "align":
+    {
+        "time": "0-18:00:00"
+    },
+    "cutadapt":
+    {
+	"time": "0-08:00:00"
     },
     "qualtrim":
     {

@@ -1,9 +1,11 @@
 {
-    "samples": ["CR1_S17", "CR5_S18", "CR9_S19", "CR13_S20"],
-    "fastq_file_dir": "../fastq_files/",
-    "fastq_prefix": "SG_",
-    "fastq_mid": "_L001_",
-    "fastq_suffix": "_001",
+    "samples": ["name_1", "name_2", "name_4", "name_3"],
+    "fastq_file_dir": "/scratch/fastq_files/",
+    "fastq_prefix": "",
+    "fastq_mid": "_CKDL200160697-1a-D700-AK1681_HCHFTBBXX_L7_",
+    "fastq_suffix": "",
+    "cutadapt_a": "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA",
+    "cutadapt_A": "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT",
     "assembly": "mm10",
     "bowtie2_params": "--local --maxins 1000",
     "qualtrim_mapq": "10",
@@ -16,11 +18,11 @@
         "seacr_path": "/oak/stanford/groups/crabtree/Sai/Software/SEACR_1.3.sh",
         "type": ["relaxed","stringent"],
 	"cutoff": ["0.05","0.1"],
-	"merge": ["1000","100"]
+	"merge": ["1000"]
     },
     "macs2_params":
     {
-        "q": ["5e-2","1e-2"],
+        "q": ["5e-2"],
 	"genome": "mm",
 	"type": "narrow",
 	"merge": "1000"
@@ -29,7 +31,7 @@
     {
 	"bamPE_params": "--plotFileFormat pdf --verbose",
 	"plotCov_params": "--smartLabels --skipZeros --extendReads --ignoreDuplicates --centerReads",
-	"blacklist_file": "/oak/stanford/groups/crabtree/Sai//Blacklist_beds/mm10.blacklist.bed",
+	"blacklist_file": "/oak/stanford/groups/crabtree/Sai//Blacklist_beds/mm10-blacklist.v2.bed",
 	"multiBamSum_params": "--smartLabels --verbose --extendReads",
 	"plotCorr_params": "--skipZeros"
     }
