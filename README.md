@@ -30,7 +30,7 @@ Make extra sure to change anything below labeled "->"!!
     fastq_file_dir+"/"+fastq_prefix+"{sample}"+fastq_mid+"R1"+fastq_suffix+".fastq.gz" (or R2)
     In "samples", you can have a comma-separated list [] of all your samples you'd like to 
     process. All following files will be named with just the name of the sample. 
-3. --> "assembly": mm10, mm9, hg38, hg19, etc. Used as a parameter in bowtie2. 
+3. --> "assembly": mm10, mm9, hg38, hg19, etc. Used as a parameter in bowtie2. .
 4. "bowtie2_params": the rest of the bowtie2 parameters
 5. "qualtrim_mapq": the minimum mapq quality score for filtering reads
 6. "picard_params": Picard parameters INCLUDING the path of the picard.jar file.
@@ -54,7 +54,7 @@ Make extra sure to change anything below labeled "->"!!
        You can change colors for example of the plots here. 
        Make sure to change "blacklist_file" to the path where you have the appropriate organism's 
        blacklist bed file of regions to skip. 
-       
+ 13. --> NEW in v4! Use cutadapt to trim reads. Enter the "cutadapt_a" and "cutadapt_A" trimming sequences, where -a is fwd and -A is rev.
 
 ### HOW TO EDIT cluster.json
 
